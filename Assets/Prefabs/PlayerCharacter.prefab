@@ -57,7 +57,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 61
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -94,7 +94,6 @@ GameObject:
   - component: {fileID: 9102778154231016507}
   - component: {fileID: 5901407845221714498}
   - component: {fileID: 8291566127056757979}
-  - component: {fileID: 2557913708147646464}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -165,20 +164,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &2557913708147646464
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6581815185676886292}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7722397713251647884
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,9 +175,8 @@ GameObject:
   - component: {fileID: 9169413912189947031}
   - component: {fileID: 3044113446868046567}
   - component: {fileID: 5573427860215421396}
-  - component: {fileID: 5867552325446390624}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Front
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -261,19 +245,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5867552325446390624
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7722397713251647884}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &9017115951614998146
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,6 +255,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1139718189221467268}
   - component: {fileID: 1235184989339136830}
+  - component: {fileID: 2886504948108181641}
   m_Layer: 0
   m_Name: PlayerCharacter
   m_TagString: Untagged
@@ -320,4 +292,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d51dde5bf1684948a793cef1f25d9c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MoveSpeed: 20
+  m_MoveSpeed: 1
+  m_CameraSpeed: 1
+--- !u!136 &2886504948108181641
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9017115951614998146}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}

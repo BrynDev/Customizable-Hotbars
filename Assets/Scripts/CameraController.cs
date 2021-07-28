@@ -22,6 +22,10 @@ public class CameraController : MonoBehaviour
    
     void Update()
     {
+        if(!Input.GetMouseButton(0))
+        {
+            return;
+        }
         m_TotalMouseX += Input.GetAxis("MouseX") * m_CameraSpeed;
         m_TotalMouseY -= Input.GetAxis("MouseY") * m_CameraSpeed;
         m_TotalMouseY = Mathf.Clamp(m_TotalMouseY, -75, 60);

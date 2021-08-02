@@ -5,21 +5,16 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     [SerializeField]
-    private Transform m_Target;
+    private Transform m_Target = null;
     [SerializeField]
-    private Transform m_Player;
+    private Transform m_Player = null;
     [SerializeField]
     private float m_CameraSpeed = 1;
 
-    private float m_TotalMouseX;
-    private float m_TotalMouseY;
+    private float m_TotalMouseX = 0;
+    private float m_TotalMouseY = 0;
     
-    void Start()
-    {
-        
-    }
 
-   
     void Update()
     {
         if(!Input.GetMouseButton(0))

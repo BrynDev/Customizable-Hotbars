@@ -7,12 +7,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float m_MoveSpeed = 1;
     
-
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
        float movementForward = Input.GetAxis("Forward");

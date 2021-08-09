@@ -11,6 +11,8 @@ public class ClickController : MonoBehaviour
    
     public void Start()
     {
+        Cursor.lockState = CursorLockMode.Confined;    
+
         try
         {
             // Get the event system
@@ -34,10 +36,8 @@ public class ClickController : MonoBehaviour
 
     public void Update()
     {
-        if (!Input.GetMouseButtonDown(0))
-        {
-            return;
-        }
+        bool isLeftButtonDown = Input.GetMouseButtonDown(0);
+        bool isLeftButtonUp = Input.GetMouseButtonUp(0);
 
         PointerEventData eventData = new PointerEventData(m_EventSystem);
         eventData.position = Input.mousePosition;
@@ -48,7 +48,15 @@ public class ClickController : MonoBehaviour
 
             foreach(RaycastResult rcResult in results)
             {
-                rcResult.gameObject.GetComponent<Clickable>().OnClick();
+                if(isLeftButtonDown)
+                {
+                   rcResult.gameObject.GetComponent<Clickable>().OnLeftMouseButtonDown();
+                }
+                else if (isLeftButtonUp)
+                {
+                   rcResult.gameObject.GetComponent<Clickable>().OnLeftMouseButtonUp();
+                }
+               
             }
         }
     }

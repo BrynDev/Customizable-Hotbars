@@ -4,9 +4,28 @@ using UnityEngine;
 
 public class DragButtonBehavior : Clickable
 {
-    public override void OnClick()
+    private bool m_IsDragged = false;
+    
+    public override void OnLeftMouseButtonDown()
     {
         Debug.Log("Drag button hit");
+        m_IsDragged = true;
     }
-   
+
+    public override void OnLeftMouseButtonUp()
+    {
+        Debug.Log("Drag button release");
+        m_IsDragged = false;
+    }
+
+    public void Update()
+    {
+        if(!m_IsDragged)
+        {
+            return;
+        }
+
+        transform.position = Input.mousePosition;
+    }
+
 }

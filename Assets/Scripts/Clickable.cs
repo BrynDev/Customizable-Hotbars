@@ -4,5 +4,6 @@ using UnityEngine;
 
 abstract public class Clickable : MonoBehaviour
 {
-    public abstract void OnClick();
+    public abstract void OnLeftMouseButtonDown();
+    public abstract void OnLeftMouseButtonUp();
 }

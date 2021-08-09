@@ -17,7 +17,7 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        if(!Input.GetMouseButton(0))
+        if(!Input.GetMouseButton(1))
         {
             return;
         }
@@ -28,7 +28,8 @@ public class CameraController : MonoBehaviour
        
         m_Target.rotation = Quaternion.Euler(m_TotalMouseY, m_TotalMouseX, 0);
 
-        m_Player.rotation = Quaternion.Euler(0, m_TotalMouseX, 0);
+        //m_Player.rotation = Quaternion.Euler(0, m_TotalMouseX, 0);
+        m_Player.transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
     }
 
     

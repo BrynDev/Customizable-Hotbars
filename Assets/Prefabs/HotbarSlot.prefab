@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7912771779375990840}
+  - component: {fileID: 1148255737446947076}
   m_Layer: 0
   m_Name: HotbarSlot
   m_TagString: Untagged
@@ -31,6 +32,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1148255737446947076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7633815708000360147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0561b5d0432bc7e4eb022e479cba35b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CurrentAction: {fileID: 0}
 --- !u!1 &8321346838341192781
 GameObject:
   m_ObjectHideFlags: 0
@@ -43,7 +57,7 @@ GameObject:
   - component: {fileID: 4031191243524021828}
   - component: {fileID: 4584381616622940355}
   m_Layer: 5
-  m_Name: ActionImage
+  m_Name: SlotBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

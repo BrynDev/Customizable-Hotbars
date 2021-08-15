@@ -5,7 +5,12 @@ using UnityEngine.UI;
 
 public abstract class Action : MonoBehaviour
 {
-    private Image m_ActionIcon = null;
+    protected Image m_ActionIcon = null;
 
-    protected abstract void Execute();
+    protected void InitIcon()
+    {
+        m_ActionIcon = GetComponent<Image>();
+    }
+
+    public abstract void Execute();
 }

@@ -4,15 +4,27 @@ using UnityEngine;
 
 public class HotbarActionHolder : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField]
+    private GameObject m_CurrentAction;
+
     void Start()
     {
-        
-    }
+        try
+        {
+            if (m_CurrentAction != null)
+            {
+                if (m_CurrentAction.GetComponent<Action>() == null)
+                {
+                    throw new System.Exception("Invalid GameObject specified in HotbarActionHolder script");
+                }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+                //move into place
+                m_CurrentAction.transform.position = transform.position;
+            }
+        }
+        catch(System.Exception exception)
+        {
+            Debug.Log(exception.Message);
+        }
     }
 }

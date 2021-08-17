@@ -16,15 +16,11 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
        float movementForward = Input.GetAxis("Forward");
-       float movementRight = Input.GetAxis("Right");
-        //Vector3 totalMovement = new Vector3(movementRight, 0.0f, movementForward) * m_MoveSpeed * Time.deltaTime;
-        Vector3 movementDirection = movementForward * transform.forward + movementRight * transform.right;
-        movementDirection.Normalize();
-        Vector3 movementVelocity = movementDirection * m_MoveSpeed * Time.deltaTime;
-        m_RigidBody.velocity = movementVelocity;
-        //totalMovement += transform.position;
-        // m_RigidBody.MovePosition(totalMovement);
-
+       float movementRight = Input.GetAxis("Right");      
+       Vector3 movementDirection = movementForward * transform.forward + movementRight * transform.right;
+       movementDirection.Normalize();
+       Vector3 movementVelocity = movementDirection * m_MoveSpeed * Time.deltaTime;
+       m_RigidBody.velocity = movementVelocity;
     }
 
     

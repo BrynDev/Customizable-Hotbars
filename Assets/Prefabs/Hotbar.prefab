@@ -222,6 +222,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &733579440744359319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6267585428618492213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfd2ea48ef3350642ab438b50f724347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5499450895064589382
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -241,6 +253,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7292429491845014823, guid: 531afd1cf254cce4fb83561b2e016398, type: 3}
+      propertyPath: m_CurrentAction
+      value: 
+      objectReference: {fileID: 6267585428618492213}
     - target: {fileID: 7633815708000360147, guid: 531afd1cf254cce4fb83561b2e016398, type: 3}
       propertyPath: m_Name
       value: HotbarSlot

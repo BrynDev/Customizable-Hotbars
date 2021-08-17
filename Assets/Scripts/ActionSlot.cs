@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HotbarActionHolder : MonoBehaviour
+public class ActionSlot : Clickable
 {
     [SerializeField]
     private GameObject m_CurrentAction;
@@ -25,6 +25,28 @@ public class HotbarActionHolder : MonoBehaviour
         catch(System.Exception exception)
         {
             Debug.Log(exception.Message);
+        }
+    }
+
+    public override void OnLeftMouseButtonDown()
+    {
+       
+    }
+
+    public override void OnLeftMouseButtonUp()
+    {
+        ExecuteAction();
+    }
+
+    private void ExecuteAction()
+    {
+        if (m_CurrentAction != null)
+        {
+            m_CurrentAction.GetComponent<Action>().Execute();
+        }
+        else
+        {
+            Debug.Log("Empty slot pressed");
         }
     }
 }

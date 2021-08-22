@@ -365,7 +365,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3829349093473990353, guid: 174185e81609b154b9ad6c301f22dc3c, type: 3}
       propertyPath: m_Name
-      value: HotbarAction
+      value: ActionFire
       objectReference: {fileID: 0}
     - target: {fileID: 7336037545075594443, guid: 174185e81609b154b9ad6c301f22dc3c, type: 3}
       propertyPath: m_RootOrder

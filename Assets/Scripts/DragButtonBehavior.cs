@@ -34,6 +34,17 @@ public class DragButtonBehavior : Clickable
         Debug.Log("Drag button release");
         m_IsDragged = false;
     }
+
+    public override void OnDragStart()
+    {
+       
+    }
+
+    public override void OnDragEnd()
+    {
+        
+    }
+
     public void Update()
     {
         if (!m_IsDragged)

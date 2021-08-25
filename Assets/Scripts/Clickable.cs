@@ -6,4 +6,6 @@ abstract public class Clickable : MonoBehaviour
 {
     public abstract void OnLeftMouseButtonDown();
     public abstract void OnLeftMouseButtonUp();
+    public abstract void OnDragStart();
+    public abstract void OnDragEnd();
 }

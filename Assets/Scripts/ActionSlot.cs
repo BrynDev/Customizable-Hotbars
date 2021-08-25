@@ -30,12 +30,22 @@ public class ActionSlot : Clickable
 
     public override void OnLeftMouseButtonDown()
     {
-       
+       //empty
     }
 
     public override void OnLeftMouseButtonUp()
     {
         ExecuteAction();
+    }
+
+    public override void OnDragStart()
+    {
+        
+    }
+
+    public override void OnDragEnd()
+    {
+
     }
 
     private void ExecuteAction()

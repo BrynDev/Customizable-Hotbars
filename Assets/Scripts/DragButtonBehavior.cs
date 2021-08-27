@@ -26,23 +26,23 @@ public class DragButtonBehavior : Clickable
 
     public override void OnLeftMouseButtonDown()
     {
-        Debug.Log("Drag button hit");
-        m_IsDragged = true;
+        
     }
     public override void OnLeftMouseButtonUp()
-    {
-        Debug.Log("Drag button release");
-        m_IsDragged = false;
-    }
-
-    public override void OnDragStart()
     {
        
     }
 
+    public override void OnDragStart()
+    {
+        Debug.Log("Drag button hit");
+        m_IsDragged = true;
+    }
+
     public override void OnDragEnd()
     {
-        
+        Debug.Log("Drag button release");
+        m_IsDragged = false;
     }
 
     public void Update()

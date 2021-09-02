@@ -18,10 +18,10 @@ public class ClickController : MonoBehaviour
         dragging
     }
     ClickState m_CurrentClickState = ClickState.none;
-   
+
     public void Start()
     {
-        Cursor.lockState = CursorLockMode.Confined;    
+        Cursor.lockState = CursorLockMode.Confined;
 
         try
         {
@@ -30,7 +30,7 @@ public class ClickController : MonoBehaviour
             if (m_EventSystem == null)
             {
                 throw new System.Exception("No event system found in current scene");
-            }                   
+            }
         }
         catch (System.Exception exception)
         {
@@ -46,40 +46,39 @@ public class ClickController : MonoBehaviour
 
     public void Update()
     {
-        switch(m_CurrentClickState)
+        List<RaycastResult> raycastResults;
+        switch (m_CurrentClickState)
         {
             case ClickState.none:
                 //only check for left mouse button
-                if (!Input.GetMouseButtonDown(0)) 
+                if (!Input.GetMouseButtonDown(0))
                 {
                     break;
                 }
 
-                //a click happened, perform raycasts to see if anything got clicked on
-                PointerEventData eventData = new PointerEventData(m_EventSystem);
-                eventData.position = Input.mousePosition;
-                List<RaycastResult> results = new List<RaycastResult>();             
-                foreach (GraphicRaycaster raycaster in m_Raycasters)
+                //a click happened, perform raycasts to see if anything got clicked on            
+                raycastResults = DoRaycasts();
+
+                if (raycastResults.Count != 0)
                 {
-                    raycaster.Raycast(eventData, results);
-                    if(results.Count != 0)
-                    {
-                        m_CurrentClickable = results[0].gameObject.GetComponent<Clickable>(); //handle the first object hit                     
-                        break; //hit was found, don't check any other canvases                       
-                    }                  
+                    m_CurrentClickable = raycastResults[0].gameObject.GetComponent<Clickable>(); //handle the first object hit
+                    m_CurrentClickable.OnLeftMouseButtonDown();
+                    m_ClickStartPos = Input.mousePosition; //current mouse pos
+                    m_CurrentClickState = ClickState.leftButtonDown;
                 }
 
+
                 //if something got clicked on, notify it
-                if(m_CurrentClickable != null) 
+               /* if (m_CurrentClickable != null)
                 {
                     m_CurrentClickable.OnLeftMouseButtonDown();
-                    m_ClickStartPos = eventData.position; //current mouse pos
+                    m_ClickStartPos = Input.mousePosition; //current mouse pos
                     m_CurrentClickState = ClickState.leftButtonDown;
-                }            
+                }*/
                 break;
             case ClickState.leftButtonDown:
                 //if mouse button was released, notify object then drop the object and update state
-                if(Input.GetMouseButtonUp(0))
+                if (Input.GetMouseButtonUp(0))
                 {
                     m_CurrentClickable.OnLeftMouseButtonUp();
                     m_CurrentClickable = null;
@@ -87,7 +86,7 @@ public class ClickController : MonoBehaviour
                 }
 
                 //if the mouse is moving while the button is held, start dragging
-                if(Vector3.Distance(m_ClickStartPos, Input.mousePosition) > m_MinDragDelta)
+                if (Vector3.Distance(m_ClickStartPos, Input.mousePosition) > m_MinDragDelta)
                 {
                     m_CurrentClickable.OnDragStart();
                     m_CurrentClickState = ClickState.dragging;
@@ -95,13 +94,14 @@ public class ClickController : MonoBehaviour
                 break;
             case ClickState.dragging:
                 //check if mouse button was released
-                if(!Input.GetMouseButtonUp(0))
+                if (!Input.GetMouseButtonUp(0))
                 {
                     break;
                 }
 
                 //button was released, dragging has ended
-                m_CurrentClickable.OnDragEnd();
+                raycastResults = DoRaycasts();
+                m_CurrentClickable.OnDragEnd(raycastResults);
                 //drop object and update state
                 m_CurrentClickable = null;
                 m_CurrentClickState = ClickState.none;
@@ -110,6 +110,18 @@ public class ClickController : MonoBehaviour
             default:
                 break;
         }
-       
+    }
+
+    private List<RaycastResult> DoRaycasts()
+    {
+        PointerEventData eventData = new PointerEventData(m_EventSystem);
+        eventData.position = Input.mousePosition;
+        List<RaycastResult> results = new List<RaycastResult>();
+        foreach (GraphicRaycaster raycaster in m_Raycasters)
+        {
+            raycaster.Raycast(eventData, results);
+        }
+
+        return results;
     }
 }

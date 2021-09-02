@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.EventSystems;
 using UnityEngine;
 
 public class DragButtonBehavior : Clickable
@@ -39,8 +40,9 @@ public class DragButtonBehavior : Clickable
         m_IsDragged = true;
     }
 
-    public override void OnDragEnd()
+    public override void OnDragEnd(List<RaycastResult> dragTargets)
     {
+        //drag targets unused
         Debug.Log("Drag button release");
         m_IsDragged = false;
     }

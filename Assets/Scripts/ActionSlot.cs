@@ -65,7 +65,7 @@ public class ActionSlot : Clickable
     public override void OnDragEnd(List<RaycastResult> dragTargets)
     {
         m_IsActionDragged = false;
-        GameObject targetSlot = null;
+        ActionSlot targetSlot = null;
 
         //check if anything was hit
         if(dragTargets.Count != 0)
@@ -76,25 +76,38 @@ public class ActionSlot : Clickable
                 ActionSlot slotToCheck = result.gameObject.GetComponent<ActionSlot>();
                 //could possibly be combined into one if-and check,
                 //but I want to put the null check by itself to make sure IsEmpty doesn't get called on a null object
-                if(slotToCheck == null)
+                if(slotToCheck != null)
                 {
-                    continue;
-                }
-                if(slotToCheck.IsEmpty())
-                {
-                    targetSlot = result.gameObject;
+                    targetSlot = slotToCheck;
                     break;
                 }
+
+
+                /*if(slotToCheck.IsEmpty())
+                {
+                   
+                }*/
             }
         }
 
       
         if(targetSlot != null)
         {
-            //an empty slot was successfully found       
-            GameObject actionToMove = m_CurrentAction;         
-            targetSlot.GetComponent<ActionSlot>().SetAction(ref actionToMove);
-            m_CurrentAction = null;
+            if(targetSlot.IsEmpty())
+            {
+                //an empty slot was successfully found       
+                //GameObject actionToMove = m_CurrentAction;
+                //targetSlot.SetAction(ref actionToMove);
+                targetSlot.SetAction(ref m_CurrentAction);
+                m_CurrentAction = null;
+            }
+            else
+            {
+                //the target slot is already occupied, so swap that action with this one
+                GameObject otherAction = targetSlot.GetAction();
+                targetSlot.SetAction(ref m_CurrentAction);
+                SetAction(ref otherAction);
+            }
         }
         else
         {
@@ -121,6 +134,11 @@ public class ActionSlot : Clickable
         {
             m_CurrentAction.transform.position += deltaPos;
         }
+    }
+
+    public ref GameObject GetAction()
+    {
+        return ref m_CurrentAction;
     }
 
     private void ExecuteAction()

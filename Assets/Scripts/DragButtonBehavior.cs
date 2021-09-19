@@ -7,7 +7,7 @@ public class DragButtonBehavior : Clickable
 {
     private bool m_IsDragged = false;
 
-    private List<Transform> m_HotbarElements = new List<Transform>();
+    private List<ActionSlot> m_HotbarElements = new List<ActionSlot>();
     private void Start()
     {
         Transform parentTransform = transform.parent;
@@ -16,22 +16,22 @@ public class DragButtonBehavior : Clickable
         //store all hotbar slots that are a child to this drag button's parent (aka get every slot in this hotbar)
         for (int i = 0; i < nrChildren; ++i)
         {
-            Transform childObject = parentTransform.GetChild(i);
-            //don't store this drag button
-            if (childObject != transform)
-            {
-                m_HotbarElements.Add(childObject);
-            }
+            ActionSlot slot = parentTransform.GetChild(i).gameObject.GetComponent<ActionSlot>();
+            //make sure to only store slots, and not the drag button
+            if(slot != null)
+            {           
+               m_HotbarElements.Add(slot);
+            }        
         }
     }
 
     public override void OnLeftMouseButtonDown()
     {
-        
+        //empty
     }
     public override void OnLeftMouseButtonUp()
     {
-       
+       //empty
     }
 
     public override void OnDragStart()
@@ -58,9 +58,9 @@ public class DragButtonBehavior : Clickable
         transform.position = Input.mousePosition;
 
         Vector3 deltaPos = transform.position - previousPos;
-        foreach (Transform hotbarSlot in m_HotbarElements)
-        {
-            hotbarSlot.transform.position += deltaPos;
+        foreach (ActionSlot slot in m_HotbarElements)
+        {          
+           slot.Move(deltaPos);
         }
     }
 

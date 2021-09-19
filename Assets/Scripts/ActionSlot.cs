@@ -114,6 +114,15 @@ public class ActionSlot : Clickable
         m_CurrentAction.transform.position = transform.position;
     }
 
+    public void Move(Vector3 deltaPos)
+    {
+        transform.position += deltaPos;
+        if(m_CurrentAction != null)
+        {
+            m_CurrentAction.transform.position += deltaPos;
+        }
+    }
+
     private void ExecuteAction()
     {
         if (m_CurrentAction != null)

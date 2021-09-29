@@ -2944,7 +2944,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 806046618524932949, guid: bdecff98843941447beeeb31860fb3d0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 806046618524932949, guid: bdecff98843941447beeeb31860fb3d0, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2985,6 +2985,14 @@ PrefabInstance:
     - target: {fileID: 5070060829929230488, guid: bdecff98843941447beeeb31860fb3d0, type: 3}
       propertyPath: m_Name
       value: Hotbar (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070060829929230488, guid: bdecff98843941447beeeb31860fb3d0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7835178232478778285, guid: bdecff98843941447beeeb31860fb3d0, type: 3}
+      propertyPath: m_Offset.y
+      value: 60
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bdecff98843941447beeeb31860fb3d0, type: 3}

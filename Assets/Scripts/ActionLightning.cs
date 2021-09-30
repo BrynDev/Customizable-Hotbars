@@ -6,8 +6,8 @@ public class ActionLightning : Action
 {
     void Start()
     {
-        InitIcon();
-        m_ActionIcon.overrideSprite = Resources.Load<Sprite>("Icon_Lightning");
+        InitIcon("Icon_Lightning");
+        GetPlayer();
     }
 
     public override void Execute()

@@ -6,8 +6,8 @@ public class ActionFire : Action
 {
     void Start()
     {
-        InitIcon();
-        m_ActionIcon.overrideSprite = Resources.Load<Sprite>("Icon_Fire");
+        InitIcon("Icon_Fire");
+        GetPlayer();
     }
 
     public override void Execute()

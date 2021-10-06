@@ -6,8 +6,7 @@ public class ActionLightning : Action
 {
     void Start()
     {
-        InitIcon("Icon_Lightning");
-        GetPlayer();
+        InitIcon("Icon_Lightning");       
     }
 
     public override void Execute()

@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActionFire : Action
+public class ActionPotion : Action
 {
     void Start()
     {
-        InitIcon("Icon_Fire");
+        InitIcon("Icon_Potion");
     }
 
     public override void Execute()
     {
-        Debug.Log("Fire action!");
+        Debug.Log("Potion action!");
     }
 }

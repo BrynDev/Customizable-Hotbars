@@ -1,5 +1,7 @@
 # MMO-Style-Hotbars
 A side project in Unity made for fun.
+This project replicates an MMO's hotbar system, with some customization options.
+For more info, visit my website: https://bryncouvreur.wixsite.com/portfolio
 
 #### Controls
 **WASD** - Movement  

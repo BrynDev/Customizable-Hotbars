@@ -20,7 +20,6 @@ public class ActionSlot : Clickable
                     throw new System.Exception("Invalid GameObject specified in HotbarActionHolder script");
                 }
 
-                //move into place
                 m_CurrentAction.transform.position = transform.position;
             }
         }
@@ -58,8 +57,6 @@ public class ActionSlot : Clickable
         }
 
         m_IsActionDragged = true;
-
-
     }
 
     public override void OnDragEnd(List<RaycastResult> dragTargets)
@@ -73,20 +70,12 @@ public class ActionSlot : Clickable
             //search all targets for an empty ActionSlot
             foreach(RaycastResult result in dragTargets)
             {
-                ActionSlot slotToCheck = result.gameObject.GetComponent<ActionSlot>();
-                //could possibly be combined into one if-and check,
-                //but I want to put the null check by itself to make sure IsEmpty doesn't get called on a null object
+                ActionSlot slotToCheck = result.gameObject.GetComponent<ActionSlot>();               
                 if(slotToCheck != null)
                 {
                     targetSlot = slotToCheck;
                     break;
                 }
-
-
-                /*if(slotToCheck.IsEmpty())
-                {
-                   
-                }*/
             }
         }
 
@@ -96,8 +85,6 @@ public class ActionSlot : Clickable
             if(targetSlot.IsEmpty())
             {
                 //an empty slot was successfully found       
-                //GameObject actionToMove = m_CurrentAction;
-                //targetSlot.SetAction(ref actionToMove);
                 targetSlot.SetAction(ref m_CurrentAction);
                 m_CurrentAction = null;
             }

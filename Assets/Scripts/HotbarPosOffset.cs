@@ -10,7 +10,7 @@ public class HotbarPosOffset : MonoBehaviour
 
     [SerializeField]
     private Vector3 m_Offset;
-    void Start()
+    void Awake()
     {
         Canvas canvas = GetComponentInChildren<Canvas>();
         int nrChildren = canvas.transform.childCount;

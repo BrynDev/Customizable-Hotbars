@@ -16,7 +16,7 @@ Click and drag on the plus icons to move hotbars around.
 Click and drag on hotbar actions to move them to a different slot.  
 
 #### Some notable functions:
-- [ClickController:Update](Assets/Scripts/ClickController.cs#L37-L113)
-- [ActionSlot::OnDragEnd](Assets/Scripts/ActionSlot.cs#L65-L117)
-- [DragButtonBehavior::Start](Assets/Scripts/Start.cs#L11-L26)
+- [ClickController::Update](Assets/Scripts/ClickController.cs#L46-L99)
+- [ActionSlot::OnDragEnd](Assets/Scripts/ActionSlot.cs#L62-L78)
+- [DragButtonBehavior::Start](Assets/Scripts/DragButtonBehavior.cs#L11-L25)
 

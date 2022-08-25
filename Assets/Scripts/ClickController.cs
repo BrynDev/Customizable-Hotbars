@@ -25,7 +25,6 @@ public class ClickController : MonoBehaviour
 
         try
         {
-            // Get the event system
             m_EventSystem = EventSystem.current;
             if (m_EventSystem == null)
             {
@@ -50,15 +49,12 @@ public class ClickController : MonoBehaviour
         switch (m_CurrentClickState)
         {
             case ClickState.none:
-                //only check for left mouse button
                 if (!Input.GetMouseButtonDown(0))
                 {
                     break;
                 }
-
-                //a click happened, perform raycasts to see if anything got clicked on            
+         
                 raycastResults = DoRaycasts();
-
                 if (raycastResults.Count != 0)
                 {
                     m_CurrentClickable = raycastResults[0].gameObject.GetComponent<Clickable>(); //handle the first object hit
@@ -67,33 +63,24 @@ public class ClickController : MonoBehaviour
                     m_CurrentClickState = ClickState.leftButtonDown;
                 }
 
-
-                //if something got clicked on, notify it
-               /* if (m_CurrentClickable != null)
-                {
-                    m_CurrentClickable.OnLeftMouseButtonDown();
-                    m_ClickStartPos = Input.mousePosition; //current mouse pos
-                    m_CurrentClickState = ClickState.leftButtonDown;
-                }*/
                 break;
-            case ClickState.leftButtonDown:
-                //if mouse button was released, notify object then drop the object and update state
+            case ClickState.leftButtonDown:             
                 if (Input.GetMouseButtonUp(0))
                 {
                     m_CurrentClickable.OnLeftMouseButtonUp();
                     m_CurrentClickable = null;
                     m_CurrentClickState = ClickState.none;
+                    break;
                 }
 
-                //if the mouse is moving while the button is held, start dragging
                 if (Vector3.Distance(m_ClickStartPos, Input.mousePosition) > m_MinDragDelta)
                 {
                     m_CurrentClickable.OnDragStart();
                     m_CurrentClickState = ClickState.dragging;
                 }
+
                 break;
             case ClickState.dragging:
-                //check if mouse button was released
                 if (!Input.GetMouseButtonUp(0))
                 {
                     break;
@@ -102,7 +89,6 @@ public class ClickController : MonoBehaviour
                 //button was released, dragging has ended
                 raycastResults = DoRaycasts();
                 m_CurrentClickable.OnDragEnd(raycastResults);
-                //drop object and update state
                 m_CurrentClickable = null;
                 m_CurrentClickState = ClickState.none;
 

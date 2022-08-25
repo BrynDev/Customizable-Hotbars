@@ -64,10 +64,8 @@ public class ActionSlot : Clickable
         m_IsActionDragged = false;
         ActionSlot targetSlot = null;
 
-        //check if anything was hit
         if(dragTargets.Count != 0)
         {
-            //search all targets for an empty ActionSlot
             foreach(RaycastResult result in dragTargets)
             {
                 ActionSlot slotToCheck = result.gameObject.GetComponent<ActionSlot>();               
@@ -79,12 +77,10 @@ public class ActionSlot : Clickable
             }
         }
 
-      
         if(targetSlot != null)
         {
             if(targetSlot.IsEmpty())
-            {
-                //an empty slot was successfully found       
+            {    
                 targetSlot.SetAction(ref m_CurrentAction);
                 m_CurrentAction = null;
             }
@@ -139,6 +135,4 @@ public class ActionSlot : Clickable
             Debug.Log("Empty slot pressed");
         }
     }
-
-  
 }

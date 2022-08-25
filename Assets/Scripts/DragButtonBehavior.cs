@@ -13,7 +13,6 @@ public class DragButtonBehavior : Clickable
         Transform parentTransform = transform.parent;
         int nrChildren = parentTransform.childCount;
 
-        //store all hotbar slots that are a child to this drag button's parent (aka get every slot in this hotbar)
         for (int i = 0; i < nrChildren; ++i)
         {
             ActionSlot slot = parentTransform.GetChild(i).gameObject.GetComponent<ActionSlot>();
@@ -42,7 +41,7 @@ public class DragButtonBehavior : Clickable
 
     public override void OnDragEnd(List<RaycastResult> dragTargets)
     {
-        //drag targets unused
+        //dragTargets unused
         Debug.Log("Drag button release");
         m_IsDragged = false;
     }
@@ -56,8 +55,8 @@ public class DragButtonBehavior : Clickable
 
         Vector3 previousPos = transform.position;
         transform.position = Input.mousePosition;
-
         Vector3 deltaPos = transform.position - previousPos;
+
         foreach (ActionSlot slot in m_HotbarElements)
         {          
            slot.Move(deltaPos);
